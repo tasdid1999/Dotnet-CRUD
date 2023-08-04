@@ -1,0 +1,18 @@
+﻿@model QuadTheoryTestProject.Models.ViewModel.StudentViewModel
+
+
+    <div>
+     <p>Student Name : @Model.StudentName</p>
+    </div>
+     <div>
+      Gender :
+
+      @if(Model.Gender == 1){<span>Male</span>}
+      else {<span>Female</span>}
+     </div>
+     <div>
+     <p>Student Date-Of-Birth : @Model.DOB</p>
+    </div>
+     <div>
+     <a asp-controller = "Home" asp-action = "Index" class = "btn btn-primary">Return to Main List</a>
+    </div>

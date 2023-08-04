@@ -1,0 +1,56 @@
+﻿@model IEnumerable<QuadTheoryTestProject.Models.ViewModel.StudentViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Student List</h1>
+
+<p>
+    <a class ="btn btn-outline-success" asp-controller = "Home"asp-action="AddStudent">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassName)
+            </th>
+            <th>
+                Date-Of-Birth
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                    @if(item.Gender == 1){<span>Male</span>}
+                    else {<span>Female</span>}      
+                    
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            
+
+              @Html.ActionLink("Edit", "UpdateStudent","Home" ,new {  id=item.Id },new {@class = "btn btn-outline-warning"}) 
+              @Html.ActionLink("Details", "GetStudentById","Student",new {id = item.Id},new {@class = "btn btn-outline-primary"} )
+              @Html.ActionLink("Delete", "DeleteStudent","Student" ,new {  id=item.Id },new {@class = "btn btn-outline-danger"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
